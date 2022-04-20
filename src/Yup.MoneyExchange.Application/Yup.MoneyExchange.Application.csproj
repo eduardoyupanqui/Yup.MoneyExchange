@@ -21,8 +21,6 @@
     <ProjectReference Include="..\Yup.MoneyExchange.Domain\Yup.MoneyExchange.Domain.csproj" />
   </ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Currencies\Queries\" />
 	  <Folder Include="Base\" />
-	  <Folder Include="CurrencyExchangeRates\Queries\" />
 	</ItemGroup>
 </Project>

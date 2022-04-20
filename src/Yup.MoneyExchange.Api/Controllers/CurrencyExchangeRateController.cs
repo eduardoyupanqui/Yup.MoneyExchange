@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Yup.MoneyExchange.Application.Currencies.Commands;
 using Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands;
+using Yup.MoneyExchange.Application.CurrencyExchangeRates.Queries;
 using Yup.MoneyExchange.Application.Dtos;
 
 namespace Yup.MoneyExchange.Api.Controllers;
@@ -17,6 +17,15 @@ public class CurrencyExchangeRateController : ControllerBase
     {
         _mediator = mediator;
         _logger = logger;
+    }
+
+    [HttpGet("all")]
+    [ProducesResponseType(typeof(IEnumerable<CurrencyExchangeRateResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetAll()
+    {
+        var result = await _mediator.Send(new GetAllCurrencyExchangeRateQuery());
+        return Ok(result);
     }
 
     [HttpPost]

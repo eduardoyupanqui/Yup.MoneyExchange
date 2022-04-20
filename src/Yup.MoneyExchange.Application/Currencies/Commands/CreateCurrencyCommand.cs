@@ -24,5 +24,30 @@ public class CreateCurrencyCommand : IRequest<bool>
         RegistredBy = registredBy;
     }
 
+    public class CreateCurrencyCommandCommandHandler : IRequestHandler<CreateCurrencyCommand, bool>
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IBaseRepository<Currency> _currencyRepository;
+
+        public CreateCurrencyCommandCommandHandler(IUnitOfWork unitOfWork, IBaseRepository<Currency> currencyRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _currencyRepository = currencyRepository;
+        }
+
+        public async Task<bool> Handle(CreateCurrencyCommand request, CancellationToken cancellationToken)
+        {
+            //Validaciones
+
+            var currencyToSave = new Currency(request.Name, request.Abreviature);
+
+            currencyToSave.SetCreateAudit(DateTime.Now, request.RegistredBy);
+            var result = _currencyRepository.Add(currencyToSave);
+
+            var xxx = await _unitOfWork.SaveChangesAsync();
+
+            return true;
+        }
+    }
 
 }

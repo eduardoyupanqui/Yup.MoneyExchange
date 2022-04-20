@@ -16,5 +16,8 @@
     <ProjectReference Include="..\Yup.MoneyExchange.Domain\Yup.MoneyExchange.Domain.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
 
 </Project>

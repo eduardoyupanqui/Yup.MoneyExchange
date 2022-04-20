@@ -16,6 +16,8 @@ public class ExchangeDbContext : DbContext
     {
 
     }
+    public DbSet<Currency> Currency => Set<Currency>();
+    public DbSet<CurrencyExchangeRate> CurrencyExchangeRate => Set<CurrencyExchangeRate>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -23,6 +25,8 @@ public class ExchangeDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfiguration(new CurrencyEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CurrencyExchangeRateEntityTypeConfiguration());
 
         //Disable Default DeleteBehavior
         var cascadeFKs = modelBuilder.Model.GetEntityTypes()

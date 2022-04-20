@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Yup.MoneyExchange.Application.Currencies.Commands;
@@ -8,6 +9,7 @@ using Yup.MoneyExchange.Infrastructure.Data;
 
 namespace Yup.MoneyExchange.Api.Controllers
 {
+    [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
     public class InitDbController : ControllerBase

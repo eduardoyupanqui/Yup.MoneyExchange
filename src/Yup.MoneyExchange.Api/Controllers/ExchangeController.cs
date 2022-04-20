@@ -1,10 +1,12 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Yup.MoneyExchange.Application.Dtos;
 using Yup.MoneyExchange.Application.Exchanges.Commands;
 
 namespace Yup.MoneyExchange.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class ExchangeController : ControllerBase

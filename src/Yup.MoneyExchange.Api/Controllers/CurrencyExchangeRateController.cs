@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands;
 using Yup.MoneyExchange.Application.CurrencyExchangeRates.Queries;
@@ -6,6 +7,7 @@ using Yup.MoneyExchange.Application.Dtos;
 
 namespace Yup.MoneyExchange.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class CurrencyExchangeRateController : ControllerBase

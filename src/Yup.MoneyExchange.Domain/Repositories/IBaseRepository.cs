@@ -8,4 +8,6 @@ namespace Yup.MoneyExchange.Domain.Repositories;
 
 public interface IBaseRepository<TEntity> where TEntity : class
 {
+    IEnumerable<TEntity> GetAll(bool asNoTracking = true);
+    TEntity Add(TEntity entity);
 }

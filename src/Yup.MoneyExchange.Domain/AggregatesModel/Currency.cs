@@ -9,10 +9,10 @@ namespace Yup.MoneyExchange.Domain.AggregatesModel;
 
 public class Currency : Entity, IAggregateRoot
 {
-    public Guid CurrencyGuid { get; set; }
-    public string Name { get; set; }
-    public string Abreviature { get; set; }
-    public bool EsActive { get; set; } = true;
+    public Guid CurrencyGuid { get; private set; }
+    public string Name { get; private set; }
+    public string Abreviature { get; private set; }
+    public bool EsActive { get; private set; } = true;
 
     protected Currency()
     {

@@ -13,4 +13,5 @@ public interface IBaseRepository<TEntity> where TEntity : class
     IEnumerable<TEntity> GetAll(bool asNoTracking = true);
     IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> expression, bool asNoTracking = true);
     TEntity Add(TEntity entity);
+    TEntity Update(TEntity entity);
 }

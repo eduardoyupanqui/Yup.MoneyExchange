@@ -17,9 +17,10 @@ public static class DependencyInjection
     {
         services.AddDbContext<DbContext, ExchangeDbContext>(options =>
             options
-                .UseSqlServer(Configuration.GetConnectionString(nameof(ExchangeDbContext))
-                 //, options => options.EnableRetryOnFailure()
-                 )
+                //.UseSqlServer(Configuration.GetConnectionString(nameof(ExchangeDbContext))
+                // //, options => options.EnableRetryOnFailure()
+                // )
+                .UseInMemoryDatabase(databaseName: "Exchange")
                 //.UseLoggerFactory(loggerFactory)
                 //.ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning))
                 .EnableSensitiveDataLogging(IsDevelopment)

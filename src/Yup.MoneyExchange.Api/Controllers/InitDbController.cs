@@ -23,8 +23,11 @@ namespace Yup.MoneyExchange.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get()
         {
-            _exchangeDbContext.Database.EnsureDeleted();
-            _exchangeDbContext.Database.Migrate();
+            if (!_exchangeDbContext.Database.IsInMemory())
+            {
+                _exchangeDbContext.Database.EnsureDeleted();
+                _exchangeDbContext.Database.Migrate();
+            }
 
             if (!_exchangeDbContext.Currency.Any())
             {

@@ -8,10 +8,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Yup.MoneyExchange.Domain.Repositories;
 using Yup.MoneyExchange.Domain.AggregatesModel;
+using Yup.MoneyExchange.Application.Dtos;
 
 namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands;
 
-public class CreateCurrencyExchangeRateCommand : IRequest<bool>
+public class CreateCurrencyExchangeRateCommand : IRequest<GenericResult>
 {
     public int CurrencyFromId { get; set; }
     public int CurrencyToId { get; set; }
@@ -26,7 +27,7 @@ public class CreateCurrencyExchangeRateCommand : IRequest<bool>
         RegistredBy = registredBy;
     }
 
-    public class CreateCurrencyExchangeRateCommandHandler : IRequestHandler<CreateCurrencyExchangeRateCommand, bool>
+    public class CreateCurrencyExchangeRateCommandHandler : IRequestHandler<CreateCurrencyExchangeRateCommand, GenericResult>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBaseRepository<CurrencyExchangeRate> _currencyExchangeRateRepository;
@@ -37,18 +38,20 @@ public class CreateCurrencyExchangeRateCommand : IRequest<bool>
             _currencyExchangeRateRepository = currencyExchangeRateRepository;
         }
 
-        public async Task<bool> Handle(CreateCurrencyExchangeRateCommand request, CancellationToken cancellationToken)
+        public async Task<GenericResult> Handle(CreateCurrencyExchangeRateCommand request, CancellationToken cancellationToken)
         {
+            var result = new GenericResult();
             //Validaciones
+            //TODO: Llevar a FluentValidation
 
             var currencyExchangeRateToSave = new CurrencyExchangeRate(request.CurrencyFromId, request.CurrencyToId, request.Exchange);
 
             currencyExchangeRateToSave.SetCreateAudit(DateTime.Now, request.RegistredBy);
-            var result = _currencyExchangeRateRepository.Add(currencyExchangeRateToSave);
+            var resultAdd = _currencyExchangeRateRepository.Add(currencyExchangeRateToSave);
 
-            var xxx = await _unitOfWork.SaveChangesAsync();
+            var saved = await _unitOfWork.SaveChangesAsync();
 
-            return true;
+            return result;
         }
     }
 }

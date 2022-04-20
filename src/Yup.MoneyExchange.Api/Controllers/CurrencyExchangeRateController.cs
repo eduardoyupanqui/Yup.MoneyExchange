@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Yup.MoneyExchange.Application.Currencies.Commands;
 using Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands;
+using Yup.MoneyExchange.Application.Dtos;
 
 namespace Yup.MoneyExchange.Api.Controllers;
 
@@ -19,7 +20,7 @@ public class CurrencyExchangeRateController : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(GenericResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create(CreateCurrencyExchangeRateCommand request)
     {

@@ -8,10 +8,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Yup.MoneyExchange.Domain.Repositories;
 using Yup.MoneyExchange.Domain.AggregatesModel;
+using Yup.MoneyExchange.Application.Dtos;
 
 namespace Yup.MoneyExchange.Application.Currencies.Commands;
 
-public class CreateCurrencyCommand : IRequest<bool>
+public class CreateCurrencyCommand : IRequest<GenericResult>
 {
     public string Name { get; set; }
     public string Abreviature { get; set; }
@@ -24,7 +25,7 @@ public class CreateCurrencyCommand : IRequest<bool>
         RegistredBy = registredBy;
     }
 
-    public class CreateCurrencyCommandCommandHandler : IRequestHandler<CreateCurrencyCommand, bool>
+    public class CreateCurrencyCommandCommandHandler : IRequestHandler<CreateCurrencyCommand, GenericResult>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IBaseRepository<Currency> _currencyRepository;
@@ -35,18 +36,20 @@ public class CreateCurrencyCommand : IRequest<bool>
             _currencyRepository = currencyRepository;
         }
 
-        public async Task<bool> Handle(CreateCurrencyCommand request, CancellationToken cancellationToken)
+        public async Task<GenericResult> Handle(CreateCurrencyCommand request, CancellationToken cancellationToken)
         {
+            var result = new GenericResult();
             //Validaciones
+            //TODO: Llevar a FluentValidation
 
             var currencyToSave = new Currency(request.Name, request.Abreviature);
 
             currencyToSave.SetCreateAudit(DateTime.Now, request.RegistredBy);
-            var result = _currencyRepository.Add(currencyToSave);
+            var resultAdd = _currencyRepository.Add(currencyToSave);
 
-            var xxx = await _unitOfWork.SaveChangesAsync();
+            var saved = await _unitOfWork.SaveChangesAsync();
 
-            return true;
+            return result;
         }
     }
 

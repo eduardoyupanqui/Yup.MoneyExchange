@@ -18,7 +18,10 @@ public class CurrencyExchangeRateController : ControllerBase
         _mediator = mediator;
         _logger = logger;
     }
-
+    /// <summary>
+    /// Obtener todos los tipos de cambios de las monedas registradas
+    /// </summary>
+    /// <returns></returns>
     [HttpGet("all")]
     [ProducesResponseType(typeof(IEnumerable<CurrencyExchangeRateResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
@@ -28,6 +31,12 @@ public class CurrencyExchangeRateController : ControllerBase
         return Ok(result);
     }
 
+
+    /// <summary>
+    /// Crear un nuevo tipo de cambio
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPost]
     [ProducesResponseType(typeof(GenericResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]

@@ -19,6 +19,10 @@ public class CurrencyController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Obtener todas las monedas registradas
+    /// </summary>
+    /// <returns></returns>
     [HttpGet("all")]
     [ProducesResponseType(typeof(IEnumerable<CurrencyResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
@@ -28,6 +32,11 @@ public class CurrencyController : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Crear una moneda en el sistema
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
     [HttpPost]
     [ProducesResponseType(typeof(GenericResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]

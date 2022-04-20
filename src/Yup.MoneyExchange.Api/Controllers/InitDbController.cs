@@ -19,6 +19,11 @@ namespace Yup.MoneyExchange.Api.Controllers
             _logger = logger;
             _exchangeDbContext = exchangeDbContext;
         }
+
+        /// <summary>
+        /// Elimina la base de datos y la recrea, y tambien hace una carga inicial de registros.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get()

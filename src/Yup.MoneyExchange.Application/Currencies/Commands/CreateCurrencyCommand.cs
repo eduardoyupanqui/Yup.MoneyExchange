@@ -14,7 +14,13 @@ namespace Yup.MoneyExchange.Application.Currencies.Commands;
 
 public class CreateCurrencyCommand : IRequest<GenericResult>
 {
+    /// <summary>
+    /// Nombre de la moneda
+    /// </summary>
     public string Name { get; set; }
+    /// <summary>
+    /// Abreviatura de la moneda
+    /// </summary>
     public string Abreviature { get; set; }
     [JsonIgnore]
     public Guid RegistredBy { get; set; }

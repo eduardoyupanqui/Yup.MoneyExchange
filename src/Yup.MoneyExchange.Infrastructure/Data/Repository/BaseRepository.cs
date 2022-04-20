@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Yup.MoneyExchange.Domain.Repositories;
@@ -23,6 +24,11 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     public IQueryable<TEntity> Query(bool asNoTracking = true)
     {
         return asNoTracking ? _context.Set<TEntity>().AsNoTracking() : _context.Set<TEntity>();
+    }
+    
+    public IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> expression, bool asNoTracking = true)
+    {
+        return Query(asNoTracking).Where(expression);
     }
     public virtual TEntity Add(TEntity entity)
     {

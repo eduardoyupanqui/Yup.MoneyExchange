@@ -64,6 +64,18 @@ public class Startup
                };
            });
 
+        services.AddCors(options =>
+         {
+             options.AddPolicy(name: "Angular",
+                               policy =>
+                               {
+                                   policy
+                                   .WithOrigins("http://localhost:4200")
+                                   .AllowAnyHeader()
+                                   .AllowAnyMethod();
+                               });
+         });
+
     }
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -84,6 +96,8 @@ public class Startup
 
 
         app.UseRouting();
+
+        app.UseCors("Angular");
 
         app.UseAuthentication();
         app.UseAuthorization();

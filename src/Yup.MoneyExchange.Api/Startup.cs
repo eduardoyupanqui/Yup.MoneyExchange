@@ -26,10 +26,6 @@ public class Startup
         services.AddAplicacion(Configuration);
         services.AddInfrastructure(Configuration, Environment.IsDevelopment());
 
-
-    }
-    public void ConfigureContainer(ContainerBuilder builder)
-    {
         var authConfig = Configuration.GetSection("Auth").Get<AuthConfig>();
         var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(authConfig.Secret));
 

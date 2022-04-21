@@ -9,8 +9,8 @@ namespace Yup.MoneyExchange.Domain.AggregatesModel.Base;
 public abstract class Entity : AuditoriaEntity
 {
     int? _requestedHashCode;
-    int _Id;
-    public virtual int Id
+    Guid _Id;
+    public virtual Guid Id
     {
         get
         {
@@ -24,7 +24,7 @@ public abstract class Entity : AuditoriaEntity
 
     public bool IsTransient()
     {
-        return this.Id == default(Int32);
+        return this.Id == default(Guid);
     }
 
     public override bool Equals(object obj)

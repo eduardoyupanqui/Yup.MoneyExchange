@@ -9,9 +9,8 @@ namespace Yup.MoneyExchange.Domain.AggregatesModel;
 
 public class CurrencyExchangeRate : Entity, IAggregateRoot
 {
-    public Guid CurrencyExchangeRateGuid { get; private set; }
-    public int CurrencyFromId { get; private set; }
-    public int CurrencyToId { get; private set; }
+    public Guid CurrencyFromId { get; private set; }
+    public Guid CurrencyToId { get; private set; }
     public decimal Exchange { get; private set; }
 
     public bool EsActive { get; private set; } = true;
@@ -19,9 +18,8 @@ public class CurrencyExchangeRate : Entity, IAggregateRoot
     {
         EsActive = true;
     }
-    public CurrencyExchangeRate(int currencyFromId, int currencyToId, decimal exchange)
+    public CurrencyExchangeRate(Guid currencyFromId, Guid currencyToId, decimal exchange)
     {
-        CurrencyExchangeRateGuid = Guid.NewGuid();
         CurrencyFromId = currencyFromId;
         CurrencyToId = currencyToId;
         Exchange = exchange;

@@ -19,7 +19,6 @@ public class CurrencyExchangeRateEntityTypeConfiguration : AuditoriaEntityTypeCo
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
-        builder.Property(c => c.CurrencyExchangeRateGuid).IsRequired();
 
         // Mapping
         builder.Property(c => c.Exchange).HasPrecision(12,2).IsRequired();

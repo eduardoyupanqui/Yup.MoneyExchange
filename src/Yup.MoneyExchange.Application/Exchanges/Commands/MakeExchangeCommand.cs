@@ -14,12 +14,12 @@ namespace Yup.MoneyExchange.Application.Exchanges.Commands;
 
 public class MakeExchangeCommand : IRequest<GenericResult<ExchangeResponse>>
 {
-    public int CurrencyFromId { get; set; }
-    public int CurrencyToId { get; set; }
+    public Guid CurrencyFromId { get; set; }
+    public Guid CurrencyToId { get; set; }
     public decimal Amount { get; set; }
     [JsonIgnore]
     public Guid RegistredBy { get; set; }
-    public MakeExchangeCommand(int currencyFromId, int currencyToId, decimal amount, Guid registredBy)
+    public MakeExchangeCommand(Guid currencyFromId, Guid currencyToId, decimal amount, Guid registredBy)
     {
         CurrencyFromId = currencyFromId;
         CurrencyToId = currencyToId;
@@ -47,7 +47,7 @@ public class MakeExchangeCommand : IRequest<GenericResult<ExchangeResponse>>
             var result = new GenericResult<ExchangeResponse>();
             //Validaciones
             //TODO: Llevar a FluentValidation
-            if (request.CurrencyToId == 0 || request.CurrencyFromId == 0)
+            if (request.CurrencyToId == Guid.Empty || request.CurrencyFromId == Guid.Empty)
             {
                 result.AddError("Debe ingresar Monedas existentes.");
                 return result;

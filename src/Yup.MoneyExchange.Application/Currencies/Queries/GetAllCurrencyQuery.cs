@@ -27,6 +27,7 @@ namespace Yup.MoneyExchange.Application.Currencies.Queries
                 var currencies = (from currency in _currencyRepository.Query(true)
                                  where currency.EsActive && !currency.EsEliminado
                                  select new CurrencyResponse(
+                                     currency.Id,
                                      currency.Name,
                                      currency.Abreviature)
                                  );

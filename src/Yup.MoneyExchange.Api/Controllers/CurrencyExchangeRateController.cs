@@ -57,10 +57,10 @@ public class CurrencyExchangeRateController : ControllerBase
     /// <param name="request"></param>
     /// <param name="exchangeRateId"></param>
     /// <returns></returns>
-    [HttpPut("{exchangeRateId:int}")]
+    [HttpPut("{exchangeRateId:Guid}")]
     [ProducesResponseType(typeof(GenericResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update([FromBody] UpdateCurrencyExchangeRateCommand request, [FromRoute] int exchangeRateId)
+    public async Task<IActionResult> Update([FromBody] UpdateCurrencyExchangeRateCommand request, [FromRoute] Guid exchangeRateId)
     {
         //Sacar identificador del usuario logeado
         request.RegistredBy = Guid.NewGuid();

@@ -49,8 +49,13 @@ namespace Yup.MoneyExchange.Api.Controllers
 
             if (!_exchangeDbContext.CurrencyExchangeRate.Any())
             {
+                var solesCurrency = _exchangeDbContext.Currency.FirstOrDefault(x => x.Abreviature == "SOL");
+                var dolarCurrency = _exchangeDbContext.Currency.FirstOrDefault(x => x.Abreviature == "USA");
+                var euroCurrency = _exchangeDbContext.Currency.FirstOrDefault(x => x.Abreviature == "EUR");
+
                 _exchangeDbContext.CurrencyExchangeRate.AddRange(new List<CurrencyExchangeRate> {
-                        new CurrencyExchangeRate(1, 2, 3.76m),
+                        new CurrencyExchangeRate(solesCurrency!.Id, dolarCurrency!.Id, 3.76m),
+                        new CurrencyExchangeRate(solesCurrency!.Id, euroCurrency!.Id, 4.16m)
                     });
             }
 

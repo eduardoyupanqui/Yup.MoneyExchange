@@ -17,18 +17,18 @@ public class CreateCurrencyExchangeRateCommand : IRequest<GenericResult>
     /// <summary>
     /// Identificador de la moneda de origen
     /// </summary>
-    public int CurrencyFromId { get; set; }
+    public Guid CurrencyFromId { get; set; }
     /// <summary>
     /// Identificador de la moneda de destino
     /// </summary>
-    public int CurrencyToId { get; set; }
+    public Guid CurrencyToId { get; set; }
     /// <summary>
     /// Tipo de cambio de la moneda origen a la moneda de destino
     /// </summary>
     public decimal Exchange { get; set; }
     [JsonIgnore]
     public Guid RegistredBy { get; set; }
-    public CreateCurrencyExchangeRateCommand(int currencyFromId, int currencyToId, decimal exchange, Guid registredBy)
+    public CreateCurrencyExchangeRateCommand(Guid currencyFromId, Guid currencyToId, decimal exchange, Guid registredBy)
     {
         CurrencyFromId = currencyFromId;
         CurrencyToId = currencyToId;

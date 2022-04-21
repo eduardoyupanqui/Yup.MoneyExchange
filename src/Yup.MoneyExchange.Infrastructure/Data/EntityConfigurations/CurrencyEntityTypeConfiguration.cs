@@ -17,7 +17,6 @@ public class CurrencyEntityTypeConfiguration : AuditoriaEntityTypeConfiguration<
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
-        builder.Property(c => c.CurrencyGuid).IsRequired();
 
         // Mapping
         builder.Property(c => c.Name).IsRequired();

@@ -32,6 +32,7 @@ namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Queries
                                   join currencyToQuery in _currencyRepository.Query(true) on exchangeRateQuery.CurrencyToId equals currencyToQuery.Id
                                   where exchangeRateQuery.EsActive && !exchangeRateQuery.EsEliminado
                                   select new CurrencyExchangeRateResponse(
+                                          exchangeRateQuery.Id,
                                           currencyFromQuery.Name,
                                           currencyToQuery.Name,
                                           exchangeRateQuery.Exchange

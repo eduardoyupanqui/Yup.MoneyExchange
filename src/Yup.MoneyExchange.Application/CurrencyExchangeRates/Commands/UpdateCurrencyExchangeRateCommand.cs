@@ -15,11 +15,11 @@ namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands
     public class UpdateCurrencyExchangeRateCommand : IRequest<GenericResult>
     {
         [JsonIgnore]
-        public int CurrencyExchangeRateId { get; set; }
+        public Guid CurrencyExchangeRateId { get; set; }
         public decimal Exchange { get; set; }
         [JsonIgnore]
         public Guid RegistredBy { get; set; }
-        public UpdateCurrencyExchangeRateCommand(int currencyExchangeRateId, decimal exchange)
+        public UpdateCurrencyExchangeRateCommand(Guid currencyExchangeRateId, decimal exchange)
         {
             CurrencyExchangeRateId = currencyExchangeRateId;
             Exchange = exchange;
@@ -41,7 +41,7 @@ namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands
                 var result = new GenericResult();
                 //Validaciones
                 //TODO: Llevar a FluentValidation
-                if (request.CurrencyExchangeRateId < 0)
+                if (request.CurrencyExchangeRateId == Guid.Empty)
                 {
                     result.AddError("Debe ingresar un identificador existente del Tipo de Cambio existente.");
                     return result;

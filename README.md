@@ -19,7 +19,7 @@ A continuación se mencionara alguna de ellas:
             );
     ```
 - Se  esta usando Swagger, una herramienta que nos sirve para documentar la api bajo la especificación de Open Api 3.0.
-    ![Api](images/imagen4.png)
+    ![Api](images/Imagen4.png)
 - Para la autenticación se ha creado un endpoint basico `'/login/signin'` que nos devolverá un token en base a un usuario y contraseña.
 
 - Para la autenticación del token, se esta haciendo uso del middleware de AspNetCore, que permite validar si el token es válido.
@@ -66,7 +66,7 @@ A continuación se mencionara alguna de ellas:
 ## Funcionalidades requeridas
 
 1. **Creacion del API.**
-    ![Api](images/imagen1.png)
+    ![Api](images/Imagen1.png)
     ```bash
     dotnet run Yup.MoneyExchange.Api
     ```
@@ -89,42 +89,42 @@ A continuación se mencionara alguna de ellas:
     Para dockerizar la api se ha creado un Dockerfile, que contiene el paso a paso para crear la imagen del api.
     [src\Yup.MoneyExchange.Api\Dockerfile](src\Yup.MoneyExchange.Api\Dockerfile)
     Evidencia:
-    ![Api](images/imagen2.png)
+    ![Api](images/Imagen2.png)
 
-    ![Api](images/imagen3.png)
+    ![Api](images/Imagen3.png)
 
-    ![Api](images/imagen4.png)
+    ![Api](images/Imagen4.png)
 
 1. **Uso del api mediante Postman.**
 
     Evidencia:
 
     - Crearemos las variables a usar en la collección.
-      ![Api](images/imagen5.png)
+      ![Api](images/Imagen5.png)
 
     - Inicializaremos la base de datos en memoria con carga inicial de monedas.
-      ![Api](images/imagen6.png)
+      ![Api](images/Imagen6.png)
  
     - Llamaremos al endpoint de login con un usuario y contraseña cualquiera para retornar el token.
-      ![Api](images/imagen7.png)
+      ![Api](images/Imagen7.png)
 
     - Podremos ver las monedas registradas por el InitDatabase.
-      ![Api](images/imagen8.png)
+      ![Api](images/Imagen8.png)
 
     - Obtenemos los tipos de cambio registrados en la base de datos.
-      ![Api](images/imagen9.png)
+      ![Api](images/Imagen9.png)
 
     - Crearemos un nuevo tipo de cambio con las monedas de origen y destino.
-      ![Api](images/imagen10.png)
+      ![Api](images/Imagen10.png)
 
     - Podremos ver el nuevo tipo de cambio ingresado.
-      ![Api](images/imagen11.png)
+      ![Api](images/Imagen11.png)
 
     - Aplicar un tipo de cambio a un monto.
-      ![Api](images/imagen12.png)
+      ![Api](images/Imagen12.png)
 
     - Actualizar el tipo de cambio de una moneda origen/destino
-      ![Api](images/imagen13.png)
+      ![Api](images/Imagen13.png)
 
 ## Funcionalidades opcionales
 1. **Agregar un nivel de seguridad (token).**
@@ -159,9 +159,9 @@ A continuación se mencionara alguna de ellas:
            });
     ```
 
-    ![Api](images/imagen15.png)
+    ![Api](images/Imagen15.png)
 
-    ![Api](images/imagen7.png)
+    ![Api](images/Imagen7.png)
 
     ```C#
     namespace Yup.MoneyExchange.Api.Controllers;
@@ -175,7 +175,7 @@ A continuación se mencionara alguna de ellas:
     
 
 1. **Crear un PUT para actualizar el tipo de cambio.**
-    ![Api](images/imagen14.png)
+    ![Api](images/Imagen14.png)
 
 1. **Implementar un front con angular.**
     En progreso...

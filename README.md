@@ -66,15 +66,18 @@ A continuación se mencionara alguna de ellas:
 ## Funcionalidades requeridas
 
 1. **Creacion del API.**
+
     ![Api](images/Imagen1.png)
     ```bash
     dotnet run Yup.MoneyExchange.Api
     ```
 1. **Funcionalidad de cambio de moneda.**
+
     La funcionalidad de encuentra en el comando MakeExchangeCommand.
-    [src\Yup.MoneyExchange.Application\Exchanges\Commands\MakeExchangeCommand.cs](src\Yup.MoneyExchange.Application\Exchanges\Commands\MakeExchangeCommand.cs)
+    [src/Yup.MoneyExchange.Application/Exchanges/Commands/MakeExchangeCommand.cs](src/Yup.MoneyExchange.Application/Exchanges/Commands/MakeExchangeCommand.cs)
 
 1. **Uso de InMemoryDatabase.**
+
     Uso del storage de EF Core en memoria.
     ```C#
     services.AddDbContext<DbContext, ExchangeDbContext>(options =>
@@ -86,8 +89,9 @@ A continuación se mencionara alguna de ellas:
     ```
 
 1. **Dockerizar el api e invocarlo desde Postman**
+
     Para dockerizar la api se ha creado un Dockerfile, que contiene el paso a paso para crear la imagen del api.
-    [src\Yup.MoneyExchange.Api\Dockerfile](src\Yup.MoneyExchange.Api\Dockerfile)
+    [src\Yup.MoneyExchange.Api\Dockerfile](src/Yup.MoneyExchange.Api/Dockerfile)
     Evidencia:
     ![Api](images/Imagen2.png)
 
@@ -128,6 +132,7 @@ A continuación se mencionara alguna de ellas:
 
 ## Funcionalidades opcionales
 1. **Agregar un nivel de seguridad (token).**
+
     Se agrego el middleware de authenticacion para validar el token de entrada.
     ```C#
     app.UseAuthentication();
@@ -175,7 +180,9 @@ A continuación se mencionara alguna de ellas:
     
 
 1. **Crear un PUT para actualizar el tipo de cambio.**
+
     ![Api](images/Imagen14.png)
 
 1. **Implementar un front con angular.**
+
     En progreso...

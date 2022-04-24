@@ -13,7 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHtppInterceptor } from './interceptor/auth.interceptor';
 
 var materialModules = [
   MatExpansionModule,
@@ -36,7 +37,11 @@ var materialModules = [
     FormsModule,
     ...materialModules
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthHtppInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

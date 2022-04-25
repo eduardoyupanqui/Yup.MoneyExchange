@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yup.MoneyExchange.Api", "src\Yup.MoneyExchange.Api\Yup.MoneyExchange.Api.csproj", "{3AD23930-ED0E-4AD5-9F09-34454569311C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yup.MoneyExchange.Api", "src\Yup.MoneyExchange.Api\Yup.MoneyExchange.Api.csproj", "{3AD23930-ED0E-4AD5-9F09-34454569311C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yup.MoneyExchange.Infrastructure", "src\Yup.MoneyExchange.Infrastructure\Yup.MoneyExchange.Infrastructure.csproj", "{7DCBFA33-9382-4408-A733-EB4F5FE51B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yup.MoneyExchange.Infrastructure", "src\Yup.MoneyExchange.Infrastructure\Yup.MoneyExchange.Infrastructure.csproj", "{7DCBFA33-9382-4408-A733-EB4F5FE51B35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yup.MoneyExchange.Domain", "src\Yup.MoneyExchange.Domain\Yup.MoneyExchange.Domain.csproj", "{3E3AEE05-7108-47E6-AC54-AE05491E12BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yup.MoneyExchange.Domain", "src\Yup.MoneyExchange.Domain\Yup.MoneyExchange.Domain.csproj", "{3E3AEE05-7108-47E6-AC54-AE05491E12BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yup.MoneyExchange.Application", "src\Yup.MoneyExchange.Application\Yup.MoneyExchange.Application.csproj", "{2F3F20CC-9253-47B3-AE71-5872B1E4C6B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yup.MoneyExchange.Application", "src\Yup.MoneyExchange.Application\Yup.MoneyExchange.Application.csproj", "{2F3F20CC-9253-47B3-AE71-5872B1E4C6B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reto3", "src\Reto3\Reto3.csproj", "{A7AD0B0D-FD6D-44E5-BF30-C380627EDFBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2F3F20CC-9253-47B3-AE71-5872B1E4C6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F3F20CC-9253-47B3-AE71-5872B1E4C6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F3F20CC-9253-47B3-AE71-5872B1E4C6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7AD0B0D-FD6D-44E5-BF30-C380627EDFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7AD0B0D-FD6D-44E5-BF30-C380627EDFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7AD0B0D-FD6D-44E5-BF30-C380627EDFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7AD0B0D-FD6D-44E5-BF30-C380627EDFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

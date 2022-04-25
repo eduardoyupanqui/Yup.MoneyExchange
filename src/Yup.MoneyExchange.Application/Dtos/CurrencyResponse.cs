@@ -8,13 +8,13 @@ namespace Yup.MoneyExchange.Application.Dtos
 {
     public class CurrencyResponse
     {
-        public Guid Currency { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; }
         public string Abreviature { get; }
 
-        public CurrencyResponse(Guid currency, string name, string abreviature)
+        public CurrencyResponse(Guid id, string name, string abreviature)
         {
-            Currency = currency;
+            Id = id;
             Name = name;
             Abreviature = abreviature;
         }

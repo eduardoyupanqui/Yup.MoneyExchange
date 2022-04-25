@@ -83,7 +83,7 @@ public class MakeExchangeCommand : IRequest<GenericResult<ExchangeResponse>>
 
             var exchangeRate = request.Amount * currentCurrencyExchange.ExchangeRate;
 
-            currentCurrencyExchange!.ExchangeRate = exchangeRate;
+            currentCurrencyExchange!.AmountExchange = exchangeRate;
             result.DataObject = currentCurrencyExchange;
 
             return result;

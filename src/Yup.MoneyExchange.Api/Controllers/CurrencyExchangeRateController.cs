@@ -69,4 +69,20 @@ public class CurrencyExchangeRateController : ControllerBase
         var result = await _mediator.Send(request);
         return Ok(result);
     }
+
+    /// <summary>
+    /// Actualizar el tipo de cambio
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    [HttpPut("")]
+    [ProducesResponseType(typeof(GenericResult), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Upsert([FromBody] UpsertCurrencyExchangeRateCommand request)
+    {
+        //Sacar identificador del usuario logeado
+        request.RegistredBy = Guid.NewGuid();
+        var result = await _mediator.Send(request);
+        return Ok(result);
+    }
 }

@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: 'exchange', loadChildren: () => import('./pages/exchange/exchange.module').then(m=> m.ExchangeModule)},
+  { path: 'rate', loadChildren: ()=> import('./pages/exchange-rate/exchange-rate.module').then(m=> m.ExchangeRateModule)},
   { path: 'login', component: LoginComponent },
 ];
 

@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-title>Update Exchange Rate</mat-card-title>
+    <mat-card-content>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Escoge una moneda</mat-label>
+                <mat-select [(value)]="currencyFrom" (selectionChange)="changeCurrency(currencyFrom)">
+                    <mat-option *ngFor="let currency of currencies" [value]="currency">
+                        {{currency.name}} ({{currency.abreviature}})
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Escoge una moneda</mat-label>
+                <mat-select [(value)]="currencyTo" (selectionChange)="changeCurrency(currencyTo)">
+                    <mat-option *ngFor="let currency of currencies" [value]="currency">
+                        {{currency.name}} ({{currency.abreviature}})
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Exchange rate</mat-label>
+                <input matInput [(ngModel)]='exchangeRate.exchange'>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="updateExchangeRate()" mat-button color="primary">Save</button>
+    </mat-card-actions>
+</mat-card>

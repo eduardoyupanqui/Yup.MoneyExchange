@@ -26,13 +26,15 @@ public class CreateCurrencyExchangeRateCommand : IRequest<GenericResult>
     /// Tipo de cambio de la moneda origen a la moneda de destino
     /// </summary>
     public decimal Exchange { get; set; }
+    public decimal? PreferencialExchange { get; set; }
     [JsonIgnore]
     public Guid RegistredBy { get; set; }
-    public CreateCurrencyExchangeRateCommand(Guid currencyFromId, Guid currencyToId, decimal exchange, Guid registredBy)
+    public CreateCurrencyExchangeRateCommand(Guid currencyFromId, Guid currencyToId, decimal exchange, decimal? preferencialExchange, Guid registredBy)
     {
         CurrencyFromId = currencyFromId;
         CurrencyToId = currencyToId;
         Exchange = exchange;
+        PreferencialExchange = preferencialExchange;
         RegistredBy = registredBy;
     }
 
@@ -53,7 +55,7 @@ public class CreateCurrencyExchangeRateCommand : IRequest<GenericResult>
             //Validaciones
             //TODO: Llevar a FluentValidation
 
-            var currencyExchangeRateToSave = new CurrencyExchangeRate(request.CurrencyFromId, request.CurrencyToId, request.Exchange);
+            var currencyExchangeRateToSave = new CurrencyExchangeRate(request.CurrencyFromId, request.CurrencyToId, request.Exchange, request.PreferencialExchange);
 
             currencyExchangeRateToSave.SetCreateAudit(DateTime.Now, request.RegistredBy);
             var resultAdd = _currencyExchangeRateRepository.Add(currencyExchangeRateToSave);

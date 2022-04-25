@@ -54,8 +54,8 @@ namespace Yup.MoneyExchange.Api.Controllers
                 var euroCurrency = _exchangeDbContext.Currency.FirstOrDefault(x => x.Abreviature == "EUR");
 
                 _exchangeDbContext.CurrencyExchangeRate.AddRange(new List<CurrencyExchangeRate> {
-                        new CurrencyExchangeRate(solesCurrency!.Id, dolarCurrency!.Id, 3.76m),
-                        new CurrencyExchangeRate(solesCurrency!.Id, euroCurrency!.Id, 4.16m)
+                        new CurrencyExchangeRate(solesCurrency!.Id, dolarCurrency!.Id, 3.76m, 3.50m),
+                        new CurrencyExchangeRate(solesCurrency!.Id, euroCurrency!.Id, 4.16m, 4.10m)
                     });
             }
 

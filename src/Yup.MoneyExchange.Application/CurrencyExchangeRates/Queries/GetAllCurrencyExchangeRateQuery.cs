@@ -35,7 +35,8 @@ namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Queries
                                           exchangeRateQuery.Id,
                                           currencyFromQuery.Name,
                                           currencyToQuery.Name,
-                                          exchangeRateQuery.Exchange
+                                          exchangeRateQuery.Exchange,
+                                          exchangeRateQuery.PreferencialExchange
                                       )
                                  );
                 return Task.FromResult(currencies.AsEnumerable());

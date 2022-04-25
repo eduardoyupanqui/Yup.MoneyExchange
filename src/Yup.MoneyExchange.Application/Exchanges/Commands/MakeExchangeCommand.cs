@@ -17,13 +17,15 @@ public class MakeExchangeCommand : IRequest<GenericResult<ExchangeResponse>>
     public Guid CurrencyFromId { get; set; }
     public Guid CurrencyToId { get; set; }
     public decimal Amount { get; set; }
+    public bool Preferencial { get; set; }
     [JsonIgnore]
     public Guid RegistredBy { get; set; }
-    public MakeExchangeCommand(Guid currencyFromId, Guid currencyToId, decimal amount, Guid registredBy)
+    public MakeExchangeCommand(Guid currencyFromId, Guid currencyToId, decimal amount, bool preferencial, Guid registredBy)
     {
         CurrencyFromId = currencyFromId;
         CurrencyToId = currencyToId;
         Amount = amount;
+        Preferencial = Preferencial;
         RegistredBy = registredBy;
     }
 
@@ -72,7 +74,8 @@ public class MakeExchangeCommand : IRequest<GenericResult<ExchangeResponse>>
                                                    0,
                                                    currencyFromQuery.Name,
                                                    currencyToQuery.Name,
-                                                   exchangeRateQuery.Exchange
+                                                   exchangeRateQuery.Exchange,
+                                                   exchangeRateQuery.PreferencialExchange
                                                )).FirstOrDefault();
 
             if (currentCurrencyExchange is null)
@@ -81,9 +84,17 @@ public class MakeExchangeCommand : IRequest<GenericResult<ExchangeResponse>>
                 return result;
             }
 
-            var exchangeRate = request.Amount * currentCurrencyExchange.ExchangeRate;
-
-            currentCurrencyExchange!.AmountExchange = exchangeRate;
+            if (request.Preferencial && currentCurrencyExchange.ExchangeRatePreferencial is not null)
+            {
+                var exchangeRate = request.Amount * currentCurrencyExchange.ExchangeRatePreferencial.Value;
+                currentCurrencyExchange!.AmountExchange = exchangeRate;
+            }
+            else
+            {
+                var exchangeRate = request.Amount * currentCurrencyExchange.ExchangeRate;
+                currentCurrencyExchange!.AmountExchange = exchangeRate;
+            }
+            
             result.DataObject = currentCurrencyExchange;
 
             return result;

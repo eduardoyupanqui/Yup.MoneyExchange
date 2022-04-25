@@ -13,17 +13,19 @@ namespace Yup.MoneyExchange.Application.Dtos
         public string CurrencyFrom { get; set; }
         public string CurrencyTo { get; set; }
         public decimal ExchangeRate { get; set; }
+        public decimal? ExchangeRatePreferencial { get; set; }
         public ExchangeResponse()
         {
 
         }
-        public ExchangeResponse(decimal amount, decimal amountExchange, string currencyFrom, string currencyTo, decimal exchangeRate)
+        public ExchangeResponse(decimal amount, decimal amountExchange, string currencyFrom, string currencyTo, decimal exchangeRate, decimal? exchangeRatePreferencial)
         {
             Amount = amount;
             AmountExchange = amountExchange;
             CurrencyFrom = currencyFrom;
             CurrencyTo = currencyTo;
             ExchangeRate = exchangeRate;
+            ExchangeRatePreferencial = exchangeRatePreferencial;
         }
     }
 }

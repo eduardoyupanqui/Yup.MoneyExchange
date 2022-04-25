@@ -28,6 +28,9 @@ public class ExchangeController : ControllerBase
         //Sacar identificador del usuario logeado
         request.RegistredBy = Guid.NewGuid();
 
+        //Leer de la session si es preferencial o no , o hacerlo interno en el handler llamar a la tabla usuarios
+        request.Preferencial = false;
+
         var result = await _mediator.Send(request);
         return Ok(result);
     }

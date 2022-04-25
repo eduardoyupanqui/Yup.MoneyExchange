@@ -17,6 +17,7 @@ namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands
         public Guid CurrencyFromId { get; set; }
         public Guid CurrencyToId { get; set; }
         public decimal Exchange { get; set; }
+        public decimal? PreferencialExchange { get; set; }
         [JsonIgnore]
         public Guid RegistredBy { get; set; }
         public UpsertCurrencyExchangeRateCommand(Guid currencyFromId, Guid currencyToId, decimal exchange)
@@ -61,7 +62,7 @@ namespace Yup.MoneyExchange.Application.CurrencyExchangeRates.Commands
 
                 if (currencyExchangeRateToUpdate is null)
                 {
-                    var currencyExchangeRateToAdd = new CurrencyExchangeRate(request.CurrencyFromId, request.CurrencyToId, request.Exchange);
+                    var currencyExchangeRateToAdd = new CurrencyExchangeRate(request.CurrencyFromId, request.CurrencyToId, request.Exchange, request.PreferencialExchange);
                     currencyExchangeRateToAdd.SetCreateAudit(DateTime.Now, request.RegistredBy);
                     _currencyExchangeRateRepository.Add(currencyExchangeRateToAdd);
                 }

@@ -12,13 +12,15 @@ namespace Yup.MoneyExchange.Application.Dtos
         public string CurrencyFrom { get; }
         public string CurrencyTo { get; }
         public decimal ExchangeRate { get; }
+        public decimal? ExchangeRatePreferencial { get; }
         public string Text { get => $"El tipo de cambio de {CurrencyFrom} a {CurrencyTo} es {ExchangeRate}"; }
-        public CurrencyExchangeRateResponse(Guid currencyExchangeRateId, string currencyFrom, string currencyTo, decimal exchangeRate)
+        public CurrencyExchangeRateResponse(Guid currencyExchangeRateId, string currencyFrom, string currencyTo, decimal exchangeRate, decimal? preferencialExchangeRate)
         {
             CurrencyExchangeRateId = currencyExchangeRateId;
             CurrencyFrom = currencyFrom;
             CurrencyTo = currencyTo;
             ExchangeRate = exchangeRate;
+            ExchangeRatePreferencial = preferencialExchangeRate;
         }
     }
 }

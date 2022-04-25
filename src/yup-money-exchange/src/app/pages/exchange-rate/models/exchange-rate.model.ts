@@ -9,3 +9,21 @@ export class ExchangeRate {
         this.exchange = 0;
     }
 }
+
+export class ExchangeRateRow {
+    position: number;
+    currencyFromId: string;
+    currencyFrom: string;
+    currencyToId: string;
+    currencyTo: string;
+    exchangeRate: number;
+
+    constructor(){
+        this.position = 0;
+        this.currencyFromId = '';
+        this.currencyFrom = '';
+        this.currencyToId = '';
+        this.currencyTo = '';
+        this.exchangeRate = 0;
+    }
+}

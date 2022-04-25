@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Currency } from '../models/currency.model';
-import { ExchangeRate } from '../models/exchange-rate.model';
+import { ExchangeRate, ExchangeRateRow } from '../models/exchange-rate.model';
 import { CurrencyService } from '../services/currency.service';
 import { ExchangeRateService } from '../services/exchange-rate.service';
 
@@ -17,6 +17,8 @@ export class ExchangeRateComponent implements OnInit {
   currencyTo: Currency = new Currency();
 
   exchangeRate: ExchangeRate = new ExchangeRate();
+  displayedColumns: string[] = ['position', 'currencyFrom', 'currencyTo', 'exchangeRate'];
+  exchangeRates: ExchangeRateRow[] = [];
   constructor(
     private currencyService: CurrencyService,
     private exchangeRateService: ExchangeRateService,
@@ -26,6 +28,7 @@ export class ExchangeRateComponent implements OnInit {
     this.currencyService.getCurrencies().subscribe({
       next: (response) => this.currencies = response
     });
+    this.getAllExchageRate();
   }
 
   changeCurrency(currency: Currency){
@@ -46,12 +49,19 @@ export class ExchangeRateComponent implements OnInit {
           this.snackBar.open("Se guardó correctamente.", undefined, {
             duration: 2000,
           });
+          this.getAllExchageRate();
         }else {
           this.snackBar.open(response.messages[0].message, undefined, {
             duration: 2000,
           });
         }
       }
+    });
+  }
+
+  getAllExchageRate(){
+    this.exchangeRateService.getExchangeRates().subscribe({
+      next: (response) => this.exchangeRates = response
     });
   }
 }

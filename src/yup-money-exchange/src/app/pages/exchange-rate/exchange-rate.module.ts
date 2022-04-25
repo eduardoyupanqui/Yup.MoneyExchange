@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyService } from './services/currency.service';
 import { ExchangeRateService } from './services/exchange-rate.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
 
 var materialModules = [
   MatExpansionModule,
@@ -24,7 +25,8 @@ var materialModules = [
   MatSelectModule,
   MatOptionModule,
   MatInputModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTableModule
 ];
 @NgModule({
   declarations: [

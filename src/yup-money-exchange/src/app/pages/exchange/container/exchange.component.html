@@ -1,1 +1,37 @@
-<p>exchange works!</p>
+<mat-card>
+    <mat-card-title>Make Exchange</mat-card-title>
+    <mat-card-content>
+        <h1 *ngIf="success">El tipo de cambio de {{this.currencyFrom.name}} a {{this.currencyTo.name}} es {{this.exchangeRate.exchangeRate}}</h1>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Amount</mat-label>
+                <input matInput [(ngModel)]='exchangeRate.amount'>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Currency From</mat-label>
+                <mat-select [(value)]="currencyFrom" (selectionChange)="changeCurrency(currencyFrom)">
+                    <mat-option *ngFor="let currency of currencies" [value]="currency">
+                        {{currency.name}} ({{currency.abreviature}})
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Exchange Amount</mat-label>
+                <input matInput matInput [(ngModel)]='exchangeRate.amountExchange' readonly>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Currency To</mat-label>
+                <mat-select [(value)]="currencyTo" (selectionChange)="changeCurrency(currencyTo)">
+                    <mat-option *ngFor="let currency of currencies" [value]="currency">
+                        {{currency.name}} ({{currency.abreviature}})
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="makeExchangeRate()" mat-button color="primary">Make</button>
+    </mat-card-actions>
+</mat-card>
